@@ -13,10 +13,13 @@ class Gpsd < Formula
     sha256 "a1840e937a0abdcd847abb9a3c9d735650fcb77088c97189c72abb2470dacdad" => :sierra
   end
 
+  depends_on "python" => "3.7"
   depends_on "scons" => :build
+  depends_on "ncurses"
+  depends_on "pkg-config"
 
   def install
-    system "scons", "chrpath=False", "python=False", "strip=False", "prefix=#{prefix}/"
+    system "scons", "chrpath=False", "python=True", "strip=False", "prefix=#{prefix}/"
     system "scons", "install"
   end
 
